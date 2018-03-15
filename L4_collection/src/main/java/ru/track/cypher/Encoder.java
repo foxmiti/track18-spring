@@ -20,7 +20,16 @@ public class Encoder {
      * @param text - исходный текст
      * @return зашифрованный текст
      */
-    public String encode(@NotNull Map<Character, Character> cypherTable, @NotNull String text) {
-        return null;
+    public String encode(@NotNull Map<Character, Character> cypherTable, @NotNull String text){
+        text = text.toLowerCase();
+
+        StringBuilder str = new StringBuilder();
+        for (int i = 0; i < text.length(); i++)
+            if (cypherTable.containsKey(text.charAt(i)))
+                str.append(cypherTable.get(text.charAt(i)));
+            else
+                str.append(text.charAt(i));
+
+        return str.toString();
     }
 }
